@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Shocking Demo</title>
+  <style>
+    body { font-family: monospace; max-width: 640px; margin: 3rem auto; padding: 0 1rem; }
+    h1   { font-size: 1.2rem; }
+    pre  { background: #f4f4f4; padding: 1rem; border-radius: 4px; overflow: auto; }
+    .label { color: #888; font-size: .85rem; margin-top: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>shocking — union-mount demo</h1>
+
+  <div class="label">/_mounts (active overlays)</div>
+  <pre id="mounts">loading…</pre>
+
+  <div class="label">/project.json (from base)</div>
+  <pre id="base-proj">loading…</pre>
+
+  <div id="overlay-section"></div>
+
+  <script type="module">
+    async function fetchJSON(url) {
+      const r = await fetch(url);
+      return r.ok ? r.json() : { error: r.status };
+    }
+
+    const mounts = await fetchJSON('/_mounts');
+    document.getElementById('mounts').textContent = JSON.stringify(mounts, null, 2);
+
+    const baseProj = await fetchJSON('/project.json');
+    document.getElementById('base-proj').textContent = JSON.stringify(baseProj, null, 2);
+
+    const sec = document.getElementById('overlay-section');
+    for (const o of mounts.overlays ?? []) {
+      const url = o.mountPath + '/project.json';
+      const data = await fetchJSON(url);
+      sec.insertAdjacentHTML('beforeend', `
+        <div class="label">${url} (overlay — shadows base if it exists here too)</div>
+        <pre>${JSON.stringify(data, null, 2)}</pre>
+      `);
+    }
+  </script>
+</body>
+</html>
