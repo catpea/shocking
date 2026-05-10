@@ -1,6 +1,6 @@
 {
   "name": "shocking",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Overlay Mount HTTP Development Server",
   "main": "cli.js",
   "bin": {
@@ -12,7 +12,6 @@
   },
   "keywords": [],
   "type": "module",
-
   "author": "catpea (https://github.com/catpea)",
   "license": "MIT",
   "repository": {
@@ -27,5 +26,4 @@
     "type": "github",
     "url": "https://github.com/sponsors/catpea"
   }
-
 }
