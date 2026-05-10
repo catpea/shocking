@@ -1,0 +1,30 @@
+{
+  "name": "shocking",
+  "version": "1.0.0",
+  "description": "Overlay Mount HTTP Development Server",
+  "main": "cli.js",
+  "bin": {
+    "shocking": "cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "module",
+
+  "author": "catpea (https://github.com/catpea)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catpea/shocking.git"
+  },
+  "bugs": {
+    "url": "https://github.com/catpea/shocking/issues"
+  },
+  "homepage": "https://catpea.github.io/shocking",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/catpea"
+  }
+
+}
